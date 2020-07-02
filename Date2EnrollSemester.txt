@@ -1,0 +1,21 @@
+CREATE OR REPLACE FUNCTION Date2EnrollSemester(p1 IN DATE)
+RETURN   NUMBER
+IS
+      v_semester NUMBER;
+      v_month     NUMBER;
+BEGIN
+      SELECT TO_CHAR(p1, 'MM')
+      INTO     v_month
+      FROM DUAL;
+
+      IF v_month >= '11' THEN 
+		v_semester := 1; 
+      ELSIF v_month<='04' THEN
+                v_semester := 1; 
+      ELSE
+                v_semester := 2; 
+      END IF;
+            
+      RETURN v_semester;
+END;
+/

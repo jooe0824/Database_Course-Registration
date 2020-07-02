@@ -1,0 +1,22 @@
+CREATE TABLE course2(
+   c_id VARCHAR(10) CONSTRAINT course2_pk PRIMARY KEY,
+   c_id_no NUMBER NOT NULL,
+   c_name VARCHAR(30) NOT NULL,
+   c_unit NUMBER NOT NULL,
+   c_max  NUMBER NOT NULL,
+   c_people NUMBER NOT NULL,
+   c_day  VARCHAR(10) NOT NULL,
+   c_time VARCHAR(10) NOT NULL,
+   c_where VARCHAR(30) NOT NULL
+);
+
+INSERT INTO course2 VALUES('C400', 3, '컴파일러', 3, 18, 0, '월', '2교시', '명신관 201'); 
+INSERT INTO course2 VALUES('C800', 3, '데이터베이스 프로그래밍', 3, 18, 0, '월', '3교시', '명신관 212'); 
+INSERT INTO course2 VALUES('C900', 3, '객체지향 윈도우즈 프로그래밍', 3, 18, 18, '화', '3교시', '명신관 501');
+INSERT INTO course2 VALUES('M100', 3, '멀티미디어 개론', 3, 18, 0, '월', '2교시', '새힘관 B101');
+INSERT INTO course2 VALUES('M200', 3, '선형대수', 3, 18, 0, '수', '2교시', '순헌관 400');
+INSERT INTO course2 VALUES('M300', 3, '그래픽 활용', 3, 18, 0, '목', '3교시', '명신관 109');
+INSERT INTO course2 VALUES('M400', 3, '윈도우즈 프로그래밍', 3, 18, 0, '화', '2교시', '순헌관 222');
+INSERT INTO course2 VALUES('M500', 3, '컴퓨터 그래픽스', 3, 18, 0, '수', '3교시', '주은관 24');
+INSERT INTO course2 VALUES('M600', 3, '멀티미디어 처리', 3, 18, 0, '월', '4교시', '효진관 24');
+INSERT INTO course2 VALUES('M700', 3, '게임 프로그래밍', 3, 18, 0, '목', '1교시', '가영관 24');

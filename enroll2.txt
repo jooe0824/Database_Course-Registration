@@ -1,0 +1,9 @@
+CREATE TABLE enroll2(
+   s_id VARCHAR(10) CONSTRAINT enroll2_fk1 REFERENCES student2(s_id),
+   c_id VARCHAR(10) CONSTRAINT enroll2_fk2 REFERENCES course2(c_id),
+   c_id_no NUMBER NOT NULL,
+   e_year NUMBER,
+   e_semester NUMBER
+);
+
+INSERT INTO enroll2 VALUES('11', 'C400', 3, 2020, 2);

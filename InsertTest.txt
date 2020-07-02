@@ -1,0 +1,32 @@
+ 
+
+DECLARE
+result VARCHAR2(50) := '';
+
+BEGIN
+     DBMS_OUTPUT.enable;
+     DBMS_OUTPUT.PUT_LINE('**************Insert 및 에러 처리 테스트**************');
+
+InsertEnroll('11', 'C400', 3, result);
+DBMS_OUTPUT.PUT_LINE('결과 : ' || result);
+
+InsertEnroll('11', 'C900', 3, result);
+DBMS_OUTPUT.PUT_LINE('결과 : ' || result);
+
+InsertEnroll('11', 'M100', 3, result);
+DBMS_OUTPUT.PUT_LINE('결과 : ' || result);
+
+InsertEnroll('11', 'C800', 3, result);
+DBMS_OUTPUT.PUT_LINE('결과 : ' || result);
+
+InsertEnroll('11', 'M700', 3, result);
+DBMS_OUTPUT.PUT_LINE('결과 : ' || result);
+
+DBMS_OUTPUT.PUT_LINE('**************Cursor를 이용한 SELECT 테스트*************');
+
+SelectTimeTable('11', 2020, 2);
+
+delete from enroll2 where s_id = '11' and c_id ='C800' and c_id_no =3;
+
+END;
+/

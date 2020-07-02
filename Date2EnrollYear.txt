@@ -1,0 +1,12 @@
+CREATE OR REPLACE FUNCTION Date2EnrollYear(p1 IN DATE)
+RETURN   NUMBER
+IS
+     v_year NUMBER;
+BEGIN
+     SELECT TO_NUMBER(TO_CHAR(p1, 'YYYY'))
+     INTO   v_year
+     FROM   DUAL;
+
+     RETURN v_year;
+END;
+/

@@ -1,0 +1,70 @@
+CREATE OR REPLACE PROCEDURE SelectTimeTable(sStudentId IN VARCHAR2,
+
+		nYear      IN NUMBER,
+
+		nSemester  IN NUMBER)					
+
+IS
+
+	S_COURSE2 COURSE2%ROWTYPE;
+	Sum_UNIT NUMBER := 0;
+
+CURSOR cur (sStudentId VARCHAR2, nYear NUMBER, nSemester NUMBER) IS
+
+	SELECT e.c_id, c.c_name, e.c_id_no, c.c_unit, c.c_time, c.c_where
+
+	FROM enroll2 e, course2 c
+
+	WHERE e.s_id = sStudentId and e.e_year = nYear and e.e_semester=nSemester and
+
+		  e.c_id = c.c_id and e.c_id_no=c.c_id_no 
+
+	ORDER BY 5;
+
+
+
+BEGIN
+
+	OPEN cur(sStudentId, nYear, nSemester); 
+
+
+
+
+
+	DBMS_OUTPUT.put_line(sStudentId|| '님의' || TO_CHAR(nYear) ||'년도'|| TO_CHAR(nSemester) || '학기 시간표입니다.');                        
+
+  
+
+LOOP
+
+	FETCH cur INTO S_COURSE2.c_id, S_COURSE2.c_name, S_COURSE2.c_id_no, S_COURSE2.c_unit, S_COURSE2.c_time, S_COURSE2.c_where;
+
+	EXIT  WHEN cur%NOTFOUND;
+
+
+
+	DBMS_OUTPUT.put_line('교시:' || TO_CHAR(S_COURSE2.c_time) || ', 과목번호:' || S_COURSE2.c_id || 
+
+			  ', 과목명:'|| S_COURSE2.c_name || ', 분반:' || TO_CHAR(S_COURSE2.c_id_no) ||
+
+			  ', 학점:' || TO_CHAR(S_COURSE2.c_unit) ||	 ', 장소:' || S_COURSE2.c_where);
+
+
+
+
+Sum_Unit := Sum_Unit + S_COURSE2.c_unit;
+
+END LOOP;
+
+
+
+	DBMS_OUTPUT.put_line('총 ' || TO_CHAR(cur%ROWCOUNT) || ' 과목과 총 ' || TO_CHAR(
+Sum_Unit) || '학점을 신청하였습니다.');
+
+
+
+	CLOSE cur;
+
+END;
+
+/
